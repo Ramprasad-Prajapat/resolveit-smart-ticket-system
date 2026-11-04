@@ -2,7 +2,7 @@
 
 > A clean, production-ready full-stack complaint and service-desk ticket management system built with **Spring Boot 3 (Java 21)**, **React 18 (Vite)**, and **MySQL 8**.
 
-[![Tests](https://img.shields.io/badge/Automated%20Tests-296%20Passed-success)](#-automated-testing--quality-assurance)
+[![Tests](https://img.shields.io/badge/Automated%20Tests-297%20Passed-success)](#-automated-testing--quality-assurance)
 [![JaCoCo Coverage](https://img.shields.io/badge/JaCoCo%20Coverage-87%25%20--%2096%25-blue)](#-automated-testing--quality-assurance)
 [![Responsive](https://img.shields.io/badge/Responsive-320px%20to%20Desktop-purple)](#-responsive-design--mobile-experience)
 
