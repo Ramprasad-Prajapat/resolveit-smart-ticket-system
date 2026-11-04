@@ -1,0 +1,9 @@
+{
+  "name": "resolveit-scripts",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "devDependencies": {
+    "newman": "^6.2.1"
+  }
+}

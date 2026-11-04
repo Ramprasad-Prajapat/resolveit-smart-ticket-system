@@ -1,0 +1,7 @@
+target/
+*.log
+application-local.properties
+application-local.properties.example
+.git/
+.idea/
+*.iml

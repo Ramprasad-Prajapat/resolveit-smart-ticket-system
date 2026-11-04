@@ -1,0 +1,63 @@
+# Compiled class files & build artifacts
+target/
+build/
+*.class
+*.jar
+.mvn/wrapper/maven-wrapper.jar
+
+# Node / Frontend / Scripts
+node_modules/
+frontend/node_modules/
+scripts/node_modules/
+dist/
+dist-ssr/
+build/
+.vite/
+playwright-report/
+test-results/
+
+# Test coverage
+coverage/
+backend/target/site/jacoco/
+
+# Environment & local secrets
+.env
+.env.*
+!.env.example
+application-local.properties
+**/application-local.properties
+application-local.yml
+application-secrets.yml
+*.pem
+*.key
+*.p12
+*.jks
+credentials*.json
+!application-local.properties.example
+
+# Agent, prompts & private leftovers
+PROGRESS.md
+ResolveIT-*-Prompt.md
+ResolveIT-*-Rules.md
+_backup_*/
+*.docx
+_private-files/
+
+# Logs & temporary files
+*.log
+*.tmp
+scripts/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE, OS, and Editor files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+.DS_Store
+Thumbs.db
+desktop.ini
