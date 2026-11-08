@@ -10,8 +10,8 @@
 
 ## 🌐 Live Deployments
 
-- **Frontend (Vercel):** [https://resolveit-smart-ticket-system.vercel.app](https://resolveit-smart-ticket-system.vercel.app) *(or custom deployment domain)*
-- **Backend Health Check:** [https://resolveit-backend.onrender.com/api/health](https://resolveit-backend.onrender.com/api/health)
+- **Frontend (Vercel):** [https://frontend-sandy-delta-64.vercel.app](https://frontend-sandy-delta-64.vercel.app)
+- **Backend Health Check:** [https://resolveit-backend-z0js.onrender.com/api/health](https://resolveit-backend-z0js.onrender.com/api/health)
 - **Deployment Documentation:** [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
 
 > **⏱️ Free-Tier Cloud Notice:** The backend runs on Render's free tier, which spins down after 15 minutes of inactivity. When visiting the live demo, the initial cold-start request may take 45–90 seconds while the container wakes up. Once active, requests respond in under 100ms.

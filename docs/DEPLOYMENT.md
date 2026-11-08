@@ -121,10 +121,10 @@ Set the following environment variables in the Render service settings:
    - **Build Command:** `npm run build`
    - **Output Directory:** `dist`
 5. **Environment Variables:**
-   - `VITE_API_BASE_URL` = `https://<your-render-service>.onrender.com/api`
+   - `VITE_API_BASE_URL` = `https://resolveit-backend-z0js.onrender.com/api`
    *(Important: Do NOT set `VITE_POLL_SECONDS` or `VITE_ALERT_SECONDS` in production so defaults apply).*
 6. Click **Deploy**.
-7. Note your assigned Vercel production URL (e.g. `https://resolveit-smart-ticket-system.vercel.app`).
+7. Verified live Vercel production URL: `https://frontend-sandy-delta-64.vercel.app`
 
 ---
 
@@ -133,25 +133,24 @@ Set the following environment variables in the Render service settings:
 1. Return to the **Render Dashboard** → `resolveit-backend` → **Environment**.
 2. Update `CORS_ORIGINS` to include your live Vercel domain:
    ```
-   CORS_ORIGINS=https://resolveit-smart-ticket-system.vercel.app
+   CORS_ORIGINS=https://frontend-sandy-delta-64.vercel.app,https://frontend-brolyy7aw-ramprasad-prajapats-projects.vercel.app,http://localhost:5173
    ```
-   *(If using custom domains or Vercel preview URLs, separate them with commas).*
-3. Render will automatically redeploy the backend with the updated CORS allowlist.
+3. Render redeploys the backend with the updated CORS allowlist.
 4. Verify from your browser:
    - Open your Vercel website.
    - Inspect network traffic on login / health check.
-   - Confirm preflight OPTIONS requests return `200 OK` with `Access-Control-Allow-Origin`.
+   - Confirm preflight OPTIONS requests return `200 OK` with `Access-Control-Allow-Origin: https://frontend-sandy-delta-64.vercel.app`.
 
 ---
 
 ## 8. Verifying the Deployment
 
-### Smoke Tests
-- [ ] `GET https://<render-service>.onrender.com/api/health` returns `{"status":"UP"}`.
-- [ ] Visiting Vercel root URL opens the Home landing page with hero, statistics, features, and footer.
-- [ ] Refreshing on direct links (e.g. `/login`, `/register`) loads properly without 404s (verified via `vercel.json`).
-- [ ] Login with demo account works and navigates to the role-specific dashboard.
-- [ ] Creating a ticket, updating status, and adding comments work cleanly.
+### Smoke Tests (Verified 100% Pass)
+- [x] `GET https://resolveit-backend-z0js.onrender.com/api/health` returns `{"status":"UP"}`.
+- [x] Visiting Vercel root URL opens the Home landing page with hero, statistics, features, and footer.
+- [x] Refreshing on direct links (e.g. `/login`, `/register`, `/complaints/new`) loads properly without 404s (verified via `vercel.json`).
+- [x] Login with demo account works and navigates to the role-specific dashboard.
+- [x] Creating a ticket, updating status, and adding comments work cleanly.
 
 ### Cold-Start Behavior (Render Free Tier)
 Render spins down free web services after 15 minutes of inactivity. When visiting the site after an idle period:
