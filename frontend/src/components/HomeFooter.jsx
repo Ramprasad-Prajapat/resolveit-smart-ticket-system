@@ -1,20 +1,14 @@
-// Public footer with real site links, role shortcuts, and optional contact details.
+// Public footer with real site links and role shortcuts.
 import { Link } from 'react-router-dom';
-import { siteInfo } from '../siteInfo';
 
 export default function HomeFooter() {
   const currentYear = new Date().getFullYear();
-
-  const hasEmail = Boolean(siteInfo?.contactEmail && siteInfo.contactEmail.trim().length > 0);
-  const hasGithub = Boolean(siteInfo?.githubUrl && siteInfo.githubUrl.trim().length > 0);
-  const hasLinkedin = Boolean(siteInfo?.linkedinUrl && siteInfo.linkedinUrl.trim().length > 0);
-  const hasContact = hasEmail || hasGithub || hasLinkedin;
 
   return (
     <footer className="home-footer">
       <div className="home-footer-inner">
         <nav aria-label="Footer" className="home-footer-nav">
-          <div className={`home-footer-grid ${hasContact ? 'home-footer-grid-5' : 'home-footer-grid-4'}`}>
+          <div className="home-footer-grid home-footer-grid-4">
             {/* Column 1: Brand */}
             <div className="home-footer-col home-footer-col-brand">
               <h3 className="home-footer-col-title">ResolveIT</h3>
@@ -70,44 +64,6 @@ export default function HomeFooter() {
                 </li>
               </ul>
             </div>
-
-            {/* Column 5: Contact (optional, only if filled) */}
-            {hasContact && (
-              <div className="home-footer-col">
-                <h3 className="home-footer-col-title">Contact</h3>
-                <ul className="home-footer-links">
-                  {hasEmail && (
-                    <li>
-                      <a href={`mailto:${siteInfo.contactEmail.trim()}`}>
-                        {siteInfo.contactEmail.trim()}
-                      </a>
-                    </li>
-                  )}
-                  {hasGithub && (
-                    <li>
-                      <a
-                        href={siteInfo.githubUrl.trim()}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        GitHub
-                      </a>
-                    </li>
-                  )}
-                  {hasLinkedin && (
-                    <li>
-                      <a
-                        href={siteInfo.linkedinUrl.trim()}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        LinkedIn
-                      </a>
-                    </li>
-                  )}
-                </ul>
-              </div>
-            )}
           </div>
         </nav>
 

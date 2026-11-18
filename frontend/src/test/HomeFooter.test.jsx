@@ -7,7 +7,6 @@ import { siteInfo } from '../siteInfo';
 describe('HomeFooter Component', () => {
   beforeEach(() => {
     siteInfo.contactEmail = '';
-    siteInfo.githubUrl = '';
     siteInfo.linkedinUrl = '';
   });
 
@@ -88,27 +87,14 @@ describe('HomeFooter Component', () => {
     expect(backToTop).toHaveAttribute('href', '#home');
   });
 
-  it('displays Contact column and populated links when siteInfo is provided', () => {
-    siteInfo.contactEmail = 'dev@resolveit.local';
-    siteInfo.githubUrl = 'https://github.com/example/resolveit';
-    // linkedinUrl left empty intentionally
-
+  it('does not display Contact column or GitHub link in home footer', () => {
     render(
       <BrowserRouter>
         <HomeFooter />
       </BrowserRouter>
     );
 
-    expect(screen.getByRole('heading', { level: 3, name: /^Contact$/i })).toBeInTheDocument();
-
-    const emailLink = screen.getByRole('link', { name: 'dev@resolveit.local' });
-    expect(emailLink).toHaveAttribute('href', 'mailto:dev@resolveit.local');
-
-    const githubLink = screen.getByRole('link', { name: 'GitHub' });
-    expect(githubLink).toHaveAttribute('href', 'https://github.com/example/resolveit');
-    expect(githubLink).toHaveAttribute('target', '_blank');
-    expect(githubLink).toHaveAttribute('rel', 'noopener noreferrer');
-
-    expect(screen.queryByRole('link', { name: 'LinkedIn' })).toBeNull();
+    expect(screen.queryByRole('heading', { level: 3, name: /^Contact$/i })).toBeNull();
+    expect(screen.queryByRole('link', { name: /^GitHub$/i })).toBeNull();
   });
 });

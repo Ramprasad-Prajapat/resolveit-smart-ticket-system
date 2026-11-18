@@ -355,9 +355,9 @@ test.describe.serial('ResolveIT Full Application Browser Flow', () => {
     // Footer verifications
     await page.locator('footer.home-footer').scrollIntoViewIfNeeded();
 
-    // Verify Contact column and GitHub link when siteInfo.githubUrl is configured
-    await expect(page.locator('footer.home-footer h3:has-text("Contact")')).toBeVisible();
-    await expect(page.locator('footer.home-footer a:has-text("GitHub")')).toHaveAttribute('href', 'https://github.com/Ramprasad-Prajapat');
+    // Verify Contact column and GitHub link are absent
+    await expect(page.locator('footer.home-footer h3:has-text("Contact")')).toHaveCount(0);
+    await expect(page.locator('footer.home-footer a:has-text("GitHub")')).toHaveCount(0);
 
     // Footer Quick Links scroll to section
     await page.click('footer.home-footer a[href="#features"]');
