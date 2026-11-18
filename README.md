@@ -45,80 +45,65 @@ The demo accounts below are pre-configured on both the live website and local en
 
 ## Run It Locally
 
-### Prerequisites
-- Java 21 JDK
-- Maven 3.9+
-- Node.js 18+ and npm
-- MySQL 8.0+ running locally
+Prerequisites: Java 21, Maven, Node 18+, MySQL 8.
 
-### Steps
-
-1. **Clone the repository:**
+1. Clone the repository:
    ```bash
    git clone https://github.com/Ramprasad-Prajapat/resolveit-smart-ticket-system.git
    cd resolveit-smart-ticket-system
    ```
 
-2. **Create the database:**
+2. Create the database (`resolveit_simple_db`):
    ```sql
    CREATE DATABASE resolveit_simple_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
    ```
 
-3. **Start the backend:**
+3. Start the backend:
    ```bash
    cd backend
    mvn spring-boot:run -Dspring-boot.run.profiles=local
    ```
-   Backend starts on `http://localhost:8080/api` (Health check at `http://localhost:8080/api/health`).
 
-4. **Start the frontend:**
+4. Start the frontend:
    ```bash
    cd frontend
    npm install
    npm run dev
    ```
-   Open `http://localhost:5173` in your browser. Log in with any demo account using password `Demo@1234`.
+   Open http://localhost:5173 and log in with a demo account (password `Demo@1234`).
 
 ## Environment Variables
 
 ### Backend Variables
 
-| Variable | Description | Default / Example |
-|---|---|---|
-| `PORT` | Web server listening port | `8080` |
-| `DB_URL` | JDBC database connection string | `jdbc:mysql://<host>:<port>/<db>?sslMode=REQUIRED` |
-| `DB_USERNAME` | Database username | `root` or `resolveit_user` |
-| `DB_PASSWORD` | Database password | `<database-password>` |
-| `JWT_SECRET` | Secret key for HMAC-SHA256 JWT signing | `<32-plus-char-secret>` |
-| `CORS_ORIGINS` | Allowed frontend origins (comma-separated) | `https://frontend-sandy-delta-64.vercel.app` |
-| `SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE` | Max JDBC connections | `5` (cloud free tier) |
-| `JAVA_TOOL_OPTIONS` | JVM memory parameters | `-XX:MaxRAMPercentage=70 -XX:+UseSerialGC` |
-| `SEED_ENABLED` | Seed demo data on initial database creation | `false` (default) |
-| `SEED_DEMO_PASSWORD` | Password for seeded demo accounts | `<seed-password>` |
+| Variable | Description |
+|---|---|
+| `DB_URL` | JDBC database connection string |
+| `DB_USERNAME` | Database username |
+| `DB_PASSWORD` | Database password |
+| `JWT_SECRET` | Secret key for JWT signing |
+| `CORS_ORIGINS` | Allowed frontend origins |
 
 ### Frontend Variables
 
-| Variable | Description | Default |
-|---|---|---|
-| `VITE_API_BASE_URL` | Base URL of the backend REST API | `http://localhost:8080/api` |
-| `VITE_POLL_SECONDS` | Interval for live notification polling | `5` |
-| `VITE_ALERT_SECONDS` | Duration before live toast dismisses | `30` |
+| Variable | Description |
+|---|---|
+| `VITE_API_BASE_URL` | Base URL of the backend REST API |
+
+Optional (defaults are fine): PORT, SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE, JAVA_TOOL_OPTIONS, SEED_ENABLED, SEED_DEMO_PASSWORD, VITE_POLL_SECONDS, VITE_ALERT_SECONDS.
 
 ## Tests
 
-| Test Suite | Environment | Total Checks | Passed | Coverage / Details |
-|---|---|---|---|---|
-| **Local Quality Gates** | Local | 297 | 297 | Backend (80), Vitest (67), Newman (34), Playwright (93), Scan (3) |
-| **Live Cloud Verification** | Live | 32 | 32 | Auth, RBAC, Complaint Lifecycle, Playwright Browser & Viewports |
-
-Run the complete local test pipeline:
+297 local checks and 32 live checks, all passed. Run them with:
 ```bash
 node scripts/run-all-tests.mjs
 ```
 
 ## Deployment
 
-ResolveIT is deployed across three cloud platforms: the React frontend is hosted on **Vercel** with global edge caching and SPA client routing rewrites; the Spring Boot backend runs inside a multi-stage Docker container on **Render** (free-tier web service in Singapore with memory-tuned JVM flags); and the persistence layer is hosted on **Aiven** as a managed MySQL 8 database connected securely over TLS (port 22945).
+- Frontend on Vercel
+- Backend on Render (Docker)
+- Database on Aiven (MySQL over TLS)
 
 ## Project Structure
 
