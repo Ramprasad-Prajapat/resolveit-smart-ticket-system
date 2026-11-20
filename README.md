@@ -58,15 +58,26 @@ Prerequisites: Java 21, Maven, Node 18+, MySQL 8.
    CREATE DATABASE resolveit_simple_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
    ```
 
-3. Start the backend:
+3. Configure and start the backend:
    ```bash
    cd backend
+   # Create your local config from the template:
+   cp src/main/resources/application-local.properties.example src/main/resources/application-local.properties
+   ```
+   In `src/main/resources/application-local.properties`, set your local MySQL password and demo seed password:
+   ```properties
+   spring.datasource.password=YOUR_LOCAL_PASSWORD
+   app.seed.enabled=true
+   app.seed.demo-password=Demo@1234
+   ```
+   Then start the backend:
+   ```bash
    mvn spring-boot:run -Dspring-boot.run.profiles=local
    ```
 
 4. Start the frontend:
    ```bash
-   cd frontend
+   cd ../frontend
    npm install
    npm run dev
    ```
